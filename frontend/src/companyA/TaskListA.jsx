@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { FaEye } from "react-icons/fa";
 import { FaUserGraduate } from "react-icons/fa";
 import { CiBookmarkCheck } from "react-icons/ci";
@@ -20,7 +21,7 @@ const TaskListA = () => {
                 
                 </div>
                 {/* only show this when user is qualified to do the task, that is after training and qualifying process */}
-                <button className='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded'>Start</button>
+               <Link to='/companyA/TaskA'><button className='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded'>Start</button></Link> 
             </div>
 
             {/* div 2 => discription , tips   */}

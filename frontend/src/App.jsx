@@ -1,16 +1,25 @@
 import { useState } from 'react'
-import UserDashboard from './UserDashboard'
+import {BrowserRouter, Route, Routes } from 'react-router-dom'
+
+import UserDashboard from './user/UserDashboard'
 import Header from './Header'
+
+// company
+import TaskA from './companyA/TaskA'
 
 function App() {
 
 
   return (
     <>
-      <div>
-       <Header></Header>
-       <UserDashboard></UserDashboard>
-          </div>
+
+      <BrowserRouter>
+      <Header></Header>
+        <Routes>
+          <Route path='/' element={<UserDashboard></UserDashboard>}  />
+          <Route path='/companyA/TaskA' element={<TaskA></TaskA>}  />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 
@@ -43,7 +52,11 @@ export default App
 // my nameing conventions :
 // companyA -> folder of the particular company that includes files of tasks...
 // taskListA -> just the listing of task , shown on user dashboard
-// taskA -> actual task ui with submit btn that actually store the data .
+// taskA (MAIN) -> actual task ui with submit btn that actually store the data .
 // trainingTaskA -> only traing of the user about the task
 // previewTaskaA -> only preview of the user about the task
 // adminPanelTaskA -> admin panel of taskA , where companyA can modify availability of the task 
+
+//-----------------------------------------------------------------------------
+// components to add in main task page : 
+// 10 min count down timer , 
