@@ -21,10 +21,6 @@ const UserSchema = new Schema(
       type:String,
       required:true
     },
-    isBanned:{
-        type : Boolean,
-        required:true
-    },
     age : {
         type : Number,
         required:true
@@ -32,8 +28,35 @@ const UserSchema = new Schema(
     region :{
         type : String,
         required:true
-    }
+    },
+    tasks: [
+      {
+          taskName : {
+             type : String,
+             
+          },
+          earnedMoney: {
+              type: Number,
+              default : 0,
+              required: true,
+              
+          },
+          spamScore: {
+              type: Number,
+              default: 0
+          },
+          isBanned: {
+              type: Boolean,
+              default: false
+          },
+          exerciseDone :{
+            type : Boolean,
+            default : false
+          }
+         
+      }
+  ]
   }
 )
-                   //          collectionname, schema , export name
+//          collectionname, schema , export name
 module.exports = mongoose.model('Users', UserSchema , 'Users')

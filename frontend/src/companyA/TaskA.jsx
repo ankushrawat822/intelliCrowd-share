@@ -246,7 +246,7 @@ const TaskA = () => {
       {/* main component */}
       <div className='mx-4'>
         {/* top page nav starts */}
-        <div className=' my-3 py-3 bg-red-500 rounded-[8px] flex items-center justify-between px-3'>
+        <div className=' my-3 py-2 bg-red-500 rounded-[8px] flex items-center justify-between px-3'>
           {/* title of task */}
           <p className='text-white font-semibold text-[20px]'>Title : Mark Offensive comments </p>
 
