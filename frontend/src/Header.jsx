@@ -1,10 +1,14 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 import Cookies from 'js-cookie';
 
+
 const Header = () => {
-  const UserName = Cookies.get('username');
+
+  
+    const UserName = Cookies.get('username');
+
   
   return (
     <>
@@ -20,7 +24,7 @@ const Header = () => {
              }
              
              <p>Refresh</p>
-             <p>Total Earning : <b>12 RS</b> </p>
+             <p>Total Earning : <b>12 Rs</b> </p>
 
              </div>
             

@@ -38,15 +38,15 @@ exports.Signup= async (req,res)=>{
   }
 
 
-  const isBanned = false;
+ 
   //create a new user
   const newUser = new Users({
     email: email,
     password: password,
     fullname: fullname,
     phoneNo: phoneNo,
-    isBanned: isBanned,
     age: age,
+    tasks : [],
     region: region
   });
 
@@ -73,9 +73,9 @@ exports.Login = async (req , res)=>{
      }
 
      //check if the password is correct
-     if (User.isBanned){
-        return res.status(200).json({error: "You are banned !"});
-     }
+    //  if (User.isBanned){
+    //     return res.status(200).json({error: "You are banned !"});
+    //  }
 
      if (User.password !== password){
       return res.status(400).json({error: "password is incorrect"});
