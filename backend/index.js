@@ -17,6 +17,8 @@ const getAllResultItems = require("../backend/companyA/routes/fetchTask")
 const submitTask = require("../backend/companyA/routes/fetchTask")
 const modifyIsAnnotate = require("../backend/companyA/routes/fetchTask")
 
+const Signup = require("../backend/companyA/routes/userAuth")
+const Login = require("../backend/companyA/routes/userAuth")
 
 // middelwares
 app.use(cors())
@@ -36,7 +38,9 @@ app.use("/api" , submitTask)
 // modify isAnnotate field
 app.use("/api" , modifyIsAnnotate)
 
-//
+//auth
+app.use("/api", Signup)
+app.use("/api", Login)
 
 
 mongoose.connect(process.env.MONGO_URL)

@@ -1,0 +1,223 @@
+
+.signin_button_head{
+    
+    border: 2px solid rgb(84,83,202);
+    background-color: white;
+    color: rgb(84,83,202);;
+   
+    cursor: pointer;
+}
+
+.signin_button_head:hover {
+background:  rgb(84,83,202);
+color: white;
+}
+
+@media(min-width:995px){
+
+}
+
+.icons_padding{
+padding:10px;
+} 
+
+
+.authcard_background{
+position:relative;
+width:100%;
+height: 100vh;
+}
+
+.login_background{
+position:relative;
+width:100%;
+height:100vh;
+}
+
+.logo{
+height:4rem;
+position:relative;
+margin:10px;
+/* left:40%; */
+}
+.authcard{
+padding:2rem;
+position:absolute;
+height:43rem;
+top:13%;
+border-radius: 18px;
+/* background: linear-gradient(90deg, rgb(249, 249, 252) 0%, rgb(222, 143, 236) 100%);; */
+}
+.logincard{
+position:absolute;
+height:34rem;
+/* top:15%; */
+top:14%;
+padding:20px;
+border-radius: 18px;
+}
+@media(min-width:995px){
+ .logo_head{
+display:none;
+}
+}
+.centre_div{
+display:flex;
+justify-content:center;
+
+}
+.centre_login{
+  position: relative;
+  left:10%;
+   
+
+}
+/* 
+.centre_horizonatally{
+position:relative;
+top:15%;
+} */
+
+@media(max-width:1015px){
+  .authcard{
+    height:70rem;
+  }
+}
+.vector_img{
+top:0%;
+height:40rem;
+}
+
+.card_margin{
+margin-top:10px;
+}
+.authcard_subdiv{
+margin-top:10px;
+}
+.subdiv_head{
+margin-top:10px;
+font-size:18px;
+}
+.icons{
+ height:4rem;
+ width:4rem;
+
+}
+.logo_dimension{
+height:50px;
+width:80px;
+}
+
+.authcard_hard_text{
+position:relative;
+left:10rem;
+}
+.mendatory_field{
+content:"*";
+}
+.forget_pass , .sign_up{
+text-decoration: none;
+color:rgb(83, 83, 92);
+}
+
+.icon_div{
+width:100%;
+margin-left:29%
+}
+
+.greycolor{
+color:rgb(83, 83, 92);
+}
+/* login success page */
+.login_success{
+position: relative;
+top:20%;
+
+}
+.sign_up_div{
+margin-left:20%;
+}
+@media(max-width:995px){
+.vector_img{
+    display:none;
+}
+.authcard_background{
+      height:190vh;
+}    .login_success{
+    top:0%;
+}
+.authcard{
+    
+    /* top:5rem; */
+    height:55rem;
+}
+}
+@media(max-width:768px){
+
+.authcard{
+    height:60rem;
+}
+.sign_up_div{
+    margin:0%;
+}
+.centre_login{
+    left:0%;
+}
+.authcard_background{
+    height:120vh;
+} 
+
+}
+@media(max-width:643px){
+.auhthcard{
+    left:0%;
+}
+.authcard_background{
+    height:120vh;
+}
+.logincard{
+    width:90%;
+    height:37rem;
+}
+}
+@media(max-width:576px){
+.authcard,.loginsuccess_card{
+   width:90%;
+ 
+}
+}
+.centre_horizontally{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.loginimg{
+height:14rem;
+width:15rem;
+position: relative;
+/* left:20%; */
+}
+
+/* login success */
+.loginsuccess_card{
+ position:absolute;
+ top:8%;
+ height:35rem;
+ padding:3rem;
+ border-radius: 18px;
+}
+
+/* otp section */
+.otp_card{
+position:absolute;
+top:8%;
+border-radius:18px ;
+
+}
+
+/* reset password */
+.resetpassword_card{
+position:absolute;
+top:8%;
+border-radius: 18px;
+}
