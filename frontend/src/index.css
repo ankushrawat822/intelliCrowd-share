@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+/* *{
     font-family: 'Poppins', sans-serif;
-}
+} */
 
 .rr{
     border: 2px solid red;

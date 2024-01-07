@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 import "./taskA.css"
 import { spamArr } from './SpamScoreData'
 
@@ -17,7 +18,7 @@ const TaskA = () => {
 
 
   // TaskA is to annotate sentiments of user comments of twitter 
-  const [querry, setQuerry] = useState("testing querry")
+  const [querry, setQuerry] = useState("loading...")
 
 
   // USER INPUTS 
@@ -31,6 +32,10 @@ const TaskA = () => {
   const [spamTask, setSpamTask] = useState({})
   // spamScore to must be calculated on server side in user model, 
   const [spamScore, setSpamScore] = useState(0)
+
+
+  //disable submit btn if no annotation marked 
+  const [disabeSubmit , setDisableSubmit ] = useState(true)
 
 
 
@@ -92,6 +97,8 @@ const TaskA = () => {
 
   // annotaton function
   const annotation = (e) => {
+
+    setDisableSubmit(false)
 
     if (e == "skip") {
       setUserInput({
@@ -248,10 +255,8 @@ const TaskA = () => {
             {/* testing , to be deleted */}
             <p className='font-bold '>spam score : {spamScore === 0 ? "0" : spamScore}%</p>
             <p>10:00</p>
-            <p>39 sec</p>
-            <p>Task : 21</p>
             <p>Guidelines</p>
-            <button>Exit</button>
+           <Link to="/"><button>Exit</button></Link> 
           </div>
         </div>
         {/* top page nav ends */}
@@ -334,7 +339,8 @@ const TaskA = () => {
               <button
                 type="button"
                 className="mt-5 text-[21px] inline-flex items-center rounded-md bg-red-500 px-3 py-2 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                onClick={() => { fetchData(); submitTask(); checkSpeedSpam();}}
+                onClick={() => { fetchData(); submitTask(); checkSpeedSpam(); setDisableSubmit(true)}}
+                disabled={disabeSubmit}
               >
 
                 Submit
