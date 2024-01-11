@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
 import "./taskA.css"
 import { exerciseTaskADataArray } from './ExerciseTaskData'
@@ -13,21 +14,26 @@ import { exerciseTaskADataArray } from './ExerciseTaskData'
 
 const ExerciseTaskA = () => {
 
+    // NAME OF TASKS
+    const taskName = "mark offensive"
+
+    const email = Cookies.get('username');
+
     // index 
-    const [index , setIndex] = useState(0)
+    const [index, setIndex] = useState(0)
 
     // show and hide result div after submit btn click
     const [showResultDiv, setShowResultDiv] = useState(false)
 
     // show this when exercise finished
-    const [isExerciseFinished , setIsExerciseFinished] = useState(false)
+    const [isExerciseFinished, setIsExerciseFinished] = useState(false)
 
 
     // TaskA is to annotate sentiments of user comments of twitter 
     const [querry, setQuerry] = useState("loading...")
 
     // storing currnet query info
-    const [ tweetObj, setTweetObj] = useState({})
+    const [tweetObj, setTweetObj] = useState({})
 
 
     // USER INPUTS 
@@ -37,10 +43,10 @@ const ExerciseTaskA = () => {
 
 
     // spam task
-   // const [spamFlag, setSpamFlag] = useState(false)
+    // const [spamFlag, setSpamFlag] = useState(false)
     //const [spamTask, setSpamTask] = useState({})
     // spamScore to must be calculated on server side in user model, 
-   
+
 
 
     //disable submit btn if no annotation marked 
@@ -50,13 +56,14 @@ const ExerciseTaskA = () => {
 
 
     useEffect(() => {
-            
-            const randomSpam = exerciseTaskADataArray[index]
-            setQuerry(randomSpam.tweet)
-            setTweetObj({ "answer" : randomSpam.answer , 
-                           "reason" : randomSpam.reason
-                })
-            // setSpamFlag(true)
+
+        const randomSpam = exerciseTaskADataArray[index]
+        setQuerry(randomSpam.tweet)
+        setTweetObj({
+            "answer": randomSpam.answer,
+            "reason": randomSpam.reason
+        })
+        // setSpamFlag(true)
 
     }, [index])
 
@@ -64,27 +71,27 @@ const ExerciseTaskA = () => {
     // function to fetch data on click on SUBMIT btn also manageing to show spam querys to user to check spam starts
     const fetchData = async () => {
 
-        if(index < exerciseTaskADataArray.length - 1){
-            setIndex(value=> value + 1)
-        }else{
+        if (index < exerciseTaskADataArray.length - 1) {
+            setIndex(value => value + 1)
+        } else {
             setIsExerciseFinished(true)
         }
-        
-    //     if(index < exerciseTaskADataArray.length){
-    //         setIndex(value=> value++)
-    //         console.log(index)
-    //         const randomSpam = exerciseTaskADataArray[index]
-    //         setQuerry(randomSpam.tweet)
-    //         setTweetObj({ "answer" : randomSpam.answer , 
-    //         "reason" : randomSpam.reason
-    // })
-    //  console.log("next " + index)
-    //     }else{
 
-    //         setIsExerciseFinished(true)
+        //     if(index < exerciseTaskADataArray.length){
+        //         setIndex(value=> value++)
+        //         console.log(index)
+        //         const randomSpam = exerciseTaskADataArray[index]
+        //         setQuerry(randomSpam.tweet)
+        //         setTweetObj({ "answer" : randomSpam.answer , 
+        //         "reason" : randomSpam.reason
+        // })
+        //  console.log("next " + index)
+        //     }else{
 
-    //     }
-       
+        //         setIsExerciseFinished(true)
+
+        //     }
+
 
     };
 
@@ -162,8 +169,6 @@ const ExerciseTaskA = () => {
 
         setShowResultDiv(false)
 
-
-
         // uncheck radio btn on state change...
         handleUnCheckRadioBtn()
 
@@ -173,6 +178,19 @@ const ExerciseTaskA = () => {
     }
     // function to submit tasks by the user and also checking user spam and also manageing skip querry ends
 
+
+
+    const exerciseCompletes = () => {
+        axios.patch('http://localhost:8080/api/task-update-exercise-done', { email, taskName })
+            .then(response => {
+                console.log('Task updated successfully!');
+                // Handle the updated tasks data if needed
+            })
+            .catch(error => {
+                console.error(error);
+                // Handle errors gracefully, e.g., display an error message to the user
+            });
+    }
 
 
 
@@ -325,28 +343,28 @@ const ExerciseTaskA = () => {
 
             {showResultDiv && <div className='absolute top-0  exerciseTaskA-result-box-bg w-full h-full flex    items-center justify-center'>
 
-        
-             <div className='bg-white rounded-[8px]  px-5 py-5 flex items-center justify-center flex-col'>
-                
-                {/* comparision of user's answer and actual answer */}
+
+                <div className='bg-white rounded-[8px]  px-5 py-5 flex items-center justify-center flex-col'>
+
+                    {/* comparision of user's answer and actual answer */}
                     <div>
-                    <p>Your Answer : { userInput.isOffensive }</p>
-                    <p className='my-2'>Correct Answer : {tweetObj.answer} </p>
+                        <p>Your Answer : {userInput.isOffensive}</p>
+                        <p className='my-2'>Correct Answer : {tweetObj.answer} </p>
 
-                    <p>Reason : {tweetObj.reason}</p>
+                        <p>Reason : {tweetObj.reason}</p>
 
-            </div>
+                    </div>
 
-                <button
-                    type="button"
-                    className="mt-5 text-[18px] inline-flex items-center rounded-md bg-red-500 px-2 py-1 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                    onClick={() => { fetchData(); submitTask(); setDisableSubmit(true) }}
-                    disabled={disabeSubmit}
-                >
+                    <button
+                        type="button"
+                        className="mt-5 text-[18px] inline-flex items-center rounded-md bg-red-500 px-2 py-1 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                        onClick={() => { fetchData(); submitTask(); setDisableSubmit(true) }}
+                        disabled={disabeSubmit}
+                    >
 
-                    Continue
-                </button> 
-                
+                        Continue
+                    </button>
+
 
                 </div>
 
@@ -364,26 +382,27 @@ const ExerciseTaskA = () => {
 
             {isExerciseFinished && <div className='absolute top-0  exerciseTaskA-result-box-bg w-full h-full flex    items-center justify-center'>
 
-        
-             <div className='bg-white rounded-[8px]  px-5 py-5 flex items-center justify-center flex-col'>
-                
-                {/* comparision of user's answer and actual answer */}
+
+                <div className='bg-white rounded-[8px]  px-5 py-5 flex items-center justify-center flex-col'>
+
+                    {/* comparision of user's answer and actual answer */}
                     <div>
-                     <p>Congrats , you have completed the exercise successfully </p>
-                     <p>now you can start doing the actual tasks and earn money</p>
+                        <p>Congrats , you have completed the exercise successfully </p>
+                        <p>now you can start doing the actual tasks and earn money</p>
 
-            </div>
+                    </div>
 
-                <Link to="/"><button
-                    type="button"
-                    className="mt-5 z-40 text-[18px] inline-flex items-center rounded-md bg-red-500 px-2 py-1 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-                    // onClick={() => { fetchData(); submitTask(); setDisableSubmit(true) }}
-                    // disabled={disabeSubmit}
-                >
+                    <Link to="/"><button
+                        type="button"
+                        className="mt-5 z-40 text-[18px] inline-flex items-center rounded-md bg-red-500 px-2 py-1 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                        // onClick={() => { fetchData(); submitTask(); setDisableSubmit(true) }}
+                        // disabled={disabeSubmit}
+                        onClick={exerciseCompletes}
+                    >
 
-                    Continue to dashboard
-                </button> </Link>
-                
+                        Continue to dashboard
+                    </button> </Link>
+
 
                 </div>
 

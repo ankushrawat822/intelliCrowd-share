@@ -20,6 +20,9 @@ const modifyIsAnnotate = require("../backend/companyA/routes/fetchTask")
 const Signup = require("../backend/companyA/routes/userAuth")
 const Login = require("../backend/companyA/routes/userAuth")
 
+const createDefaultTask = require("../backend/companyA/routes/tasks")
+const  {getCurrentUserByEmail, updateTaskExerciseDone}  = require("./companyA/controllers/userController")
+
 // middelwares
 app.use(cors())
 app.use(bodyParser.json())
@@ -41,6 +44,11 @@ app.use("/api" , modifyIsAnnotate)
 //auth
 app.use("/api", Signup)
 app.use("/api", Login)
+app.use("/api" , getCurrentUserByEmail)
+// create tasks in Tasks collection
+app.use("/api" , createDefaultTask )
+// update tasks "exerciseDone"
+app.use("/api" , updateTaskExerciseDone)
 
 
 mongoose.connect(process.env.MONGO_URL)
