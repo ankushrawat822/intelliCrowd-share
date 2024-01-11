@@ -8,6 +8,7 @@ import Header from './Header'
 import TaskA from './companyA/TaskA'
 import Signup from './Components/Authentication/Signup'
 import Login from './Components/Authentication/Login'
+import ExerciseTaskA from './companyA/ExerciseTaskA'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path='/' element={<UserDashboard></UserDashboard>}  />
           <Route path='/companyA/TaskA' element={<TaskA></TaskA>}  />
+          <Route path='/companyA/exercise/TaskA' element={<ExerciseTaskA></ExerciseTaskA>}  />
           <Route path='/signup' element={<Signup/>} />
           <Route path='/login' element={<Login/>} />
 

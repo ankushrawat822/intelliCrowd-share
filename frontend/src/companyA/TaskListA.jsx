@@ -1,11 +1,18 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { FaEye } from "react-icons/fa";
-import { FaUserGraduate } from "react-icons/fa";
+import { FaDumbbell } from "react-icons/fa6";
 import { CiBookmarkCheck } from "react-icons/ci";
 import { VscFeedback } from "react-icons/vsc";
 
 const TaskListA = () => {
+
+    useEffect(() => {
+
+      // TODO: fetch user model from database and look for "tasks" field , in the task field look for "exerciseDone" field , if true then user can do the actuall task and set the red button as "start".
+
+    }, [])
+
   return (
      <>
      {/* THIS IS MY USER DASHBOARD => TAKS LISTING UI */}
@@ -15,7 +22,7 @@ const TaskListA = () => {
                 <b className='text-[21px]'>Title : some title </b>
                 <div className='flex items-center justify-center gap-4 text-[19px]'>
                  <FaEye className='text-gray-600'></FaEye>
-                 <FaUserGraduate className='text-gray-600'></FaUserGraduate>
+                 <Link to="/companyA/exercise/TaskA"><FaDumbbell className='text-gray-600'></FaDumbbell></Link>
                  <CiBookmarkCheck></CiBookmarkCheck>
                  <VscFeedback></VscFeedback>
                 
@@ -41,4 +48,4 @@ const TaskListA = () => {
 export default TaskListA
 
 
-// task -> title , discription , available hits , money per hit , time per hit , hit preview btn ,  hit training btn.
+// task -> title , discription , available hits , money per hit , time per hit , hit preview btn ,  hit exercise btn.

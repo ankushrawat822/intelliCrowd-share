@@ -4,8 +4,6 @@ import Cookies from 'js-cookie';
 import Img from '../../assets/authentication_vector1.svg';
 import Background from '../../assets/authcard_background.jpg';
 
-
-
 import './SignUp.css';
 import { useState } from 'react';
 import axios from 'axios';
@@ -29,7 +27,6 @@ export default function Signup() {
     });
     // const API_URL ='http://localhost:1111'
  
-  
   
     const handleSubmit=(e)=>{
   

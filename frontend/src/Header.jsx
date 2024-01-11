@@ -8,6 +8,12 @@ const Header = () => {
 
   
     const UserName = Cookies.get('username');
+    
+    useEffect(() => {
+      // window.location.reload() 
+    }, [])
+    
+   
 
   
   return (
