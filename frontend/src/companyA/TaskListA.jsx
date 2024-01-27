@@ -47,10 +47,10 @@ const TaskListA = ({ }) => {
   return (
     <>
       {/* THIS IS MY USER DASHBOARD => TAKS LISTING UI */}
-      <div className='flex items-center justify-between  px-5 py-4 task-box-shadow rounded-[14px]'>
+      <div className='flex items-start justify-between  px-5 py-4 task-box-shadow rounded-[14px]'>
         {/* div 1 => title , btns  */}
         <div className=' flex items-start flex-col justify-between gap-3'>
-          <b className='text-[21px]'>Title : some title </b>
+          <b className='text-[21px]'>Mark Offensive </b>
           <div className='flex items-center justify-center gap-4 text-[19px]'>
             <FaEye className='text-gray-600'></FaEye>
             <Link to="/companyA/exercise/TaskA"><FaDumbbell className='text-gray-600'></FaDumbbell></Link>
@@ -58,6 +58,9 @@ const TaskListA = ({ }) => {
             <VscFeedback></VscFeedback>
 
           </div>
+          <span className="inline-flex items-center rounded-md bg-purple-50 px-2 py-1  text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">
+         Text Annotation
+      </span>
           {/* only show this when user is qualified to do the task, that is after training and qualifying process */}
           {/* <Link to='/companyA/TaskA'><button className='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded'>Start </button></Link> */}
 
@@ -69,11 +72,11 @@ const TaskListA = ({ }) => {
 
         {/* div 2 => discription , tips   */}
         <div className='text-justify  lg:w-[70%] flex items-start justify-start flex-col gap-4'>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure nulla suscipit harum quis? Quasi dignissimos, eos iste in quas provident unde eum qui soluta earum odio totam</p>
+          <p>Judge text content based on its potential offensiveness. In this task, users are presented with queries or sentences, and their role is to determine whether the provided text contains offensive language or content.</p>
           <div className='flex items-start justify-center gap-8'>
             <p>Earn : <b>0.43 Rs/Task</b></p>
             <p>Task : <b>1.3k</b></p>
-            <p>Time : <b>20 sec</b></p>
+            <p>Time : <b>10 sec</b></p>
           </div>
         </div>
       </div>

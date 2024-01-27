@@ -6,6 +6,8 @@ const {Login , Signup, getCurrentUserByEmail, updateTaskExerciseDone} = require(
 // patch "exerciseDone" field
 router.patch("/task-update-exercise-done" , updateTaskExerciseDone)
 
+// patch "earn "
+
 // get current user by email
 router.get("/me" , getCurrentUserByEmail)
 

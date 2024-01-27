@@ -22,6 +22,7 @@ exports.getUsers= (req , res)=>{
 // get current user by email
 exports.getCurrentUserByEmail = async (req, res) => {
   try {
+    
     const email = req.body.email; // Assuming email is in the request body
     const user = await Users.findOne({ email });
 
@@ -36,6 +37,7 @@ exports.getCurrentUserByEmail = async (req, res) => {
     res.status(500).json({ message: 'Error fetching user' });
   }
 };
+
 
 exports.Signup= async (req,res)=>{
   const {
@@ -119,6 +121,7 @@ exports.Login = async (req , res)=>{
 // function to update "exerciseDone" filed in tasks array of a perticular task
 exports.updateTaskExerciseDone = async (req, res) => {
   try {
+   
     const { email, taskName } = req.body;
     const user = await Users.findOne({ email });
 
@@ -139,5 +142,35 @@ exports.updateTaskExerciseDone = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error updating task' });
+  }
+};
+
+
+// earn money on submiting TaskA
+exports.increaseTaskEarnMoney = async (req, res) => {
+  try {
+    const { email, taskName } = req.body;
+    const user = await Users.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const taskIndex = user.tasks.findIndex(task => task.name === taskName);
+
+    if (taskIndex === -1) {
+      return res.status(404).json({ message: 'Task not found' });
+    }
+
+    // Determine the amount to increase earnMoney (example: 5)
+    const amountToIncrease = 0.43;
+
+    user.tasks[taskIndex].earnedMoney += amountToIncrease;
+    await user.save();
+
+    res.json({ message: 'Earn money increased successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error increasing earn money' });
   }
 };

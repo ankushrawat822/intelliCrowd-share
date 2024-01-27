@@ -1,0 +1,177 @@
+
+
+.home-header-border{
+    border: 2px solid #282828  !important;
+}
+
+.home-hero-bg-image{
+    background-image: url("./images/hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+
+.home-footer-border{
+    border: 2px solid #282828  !important;
+}
+
+/* home hero flip image css  */
+.emerg-tech-card-1-white-tick-img{
+    background-image: url('./images/card1-tick.svg');
+    background-size: cover;
+    width: 45px;
+    height: 45px;
+}
+
+
+/*  card 1 */
+.emerg-tech-card-1-front-img{
+    background-image: url('../Home/images/front-card-1-1-1.jpg');
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 265px;
+    height: 328px;
+    visibility:  0;
+    transition: transform 0.6s ease-out;
+    border-radius: 15px;
+}
+
+.emerg-tech-card-1-back-img{
+    background-image: url('./images/hero.png');
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 265px;
+    height: 328px;
+    opacity: 0;
+    /* transform :  rotateX(-180deg) rotateY(0); */
+    transition: opacity 0.6s ease-out;
+    transition: transform 0s;
+    border-radius: 15px;
+   
+}
+
+.emerg-tech-card-1-front-img:hover{
+    
+ transform :  rotateX(-180deg) rotateY(0);
+
+}
+
+.emerg-tech-card-1-back-img:hover{
+   
+    opacity: 1;
+    transform :  rotateX(-180deg) rotateY(0);
+
+
+}
+
+/* card 2 */
+.emerg-tech-card-2-front-img{
+    background-image: url('./images/front-card-2.jpg');
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 265px;
+    height: 328px;
+    visibility:  0;
+    transition: transform 0.6s ease-out;
+    border-radius: 15px;
+}
+
+
+.emerg-tech-card-2-front-img:hover{
+    
+ transform :  rotateX(-180deg) rotateY(0);
+
+}
+
+
+
+
+/* card 3 */
+.emerg-tech-card-3-front-img{
+    background-image: url('../Home/images/front-card-3.jpg');
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 265px;
+    height: 328px;
+    visibility:  0;
+    transition: transform 0.6s ease-out;
+    border-radius: 15px;
+}
+
+.emerg-tech-card-2-back-img{
+    background-image: url('./images/back-card-1-1.jpg');
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 265px;
+    height: 328px;
+    opacity: 0;
+    /* transform :  rotateX(-180deg) rotateY(0); */
+    transition: opacity 0.6s ease-out;
+    transition: transform 0s;
+    border-radius: 15px;
+   
+}
+
+.emerg-tech-card-3-front-img:hover{
+    
+ transform :  rotateX(-180deg) rotateY(0);
+
+}
+
+.emerg-tech-card-1-back-img:hover{
+   
+    opacity: 1;
+    transform :  rotateX(-180deg) rotateY(0);
+
+
+}
+
+
+
+/* card 4 */
+.emerg-tech-card-4-front-img{
+    background-image: url('../Home/images/front-card-4.jpg');
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 265px;
+    height: 328px;
+    visibility:  0;
+    transition: transform 0.6s ease-out;
+    border-radius: 15px;
+}
+
+.emerg-tech-card-4-back-img{
+    background-image: url('./images/back-card-1-1.jpg');
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    width: 265px;
+    height: 328px;
+    opacity: 0;
+    /* transform :  rotateX(-180deg) rotateY(0); */
+    transition: opacity 0.6s ease-out;
+    transition: transform 0s;
+    border-radius: 15px;
+   
+}
+
+.emerg-tech-card-4-front-img:hover{
+    
+ transform :  rotateX(-180deg) rotateY(0);
+
+}
+
+.emerg-tech-card-1-back-img:hover{
+   
+    opacity: 1;
+    transform :  rotateX(-180deg) rotateY(0);
+
+
+}

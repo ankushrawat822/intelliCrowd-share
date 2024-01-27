@@ -9,6 +9,7 @@ import TaskA from './companyA/TaskA'
 import Signup from './Components/Authentication/Signup'
 import Login from './Components/Authentication/Login'
 import ExerciseTaskA from './companyA/ExerciseTaskA'
+import HomePage from './Home/HomePage'
 
 function App() {
 
@@ -17,11 +18,16 @@ function App() {
     <>
 
       <BrowserRouter>
-      <Header></Header>
+      
         <Routes>
-          <Route path='/' element={<UserDashboard></UserDashboard>}  />
-          <Route path='/companyA/TaskA' element={<TaskA></TaskA>}  />
-          <Route path='/companyA/exercise/TaskA' element={<ExerciseTaskA></ExerciseTaskA>}  />
+          <Route path='/' element={<HomePage/>} />
+          <Route path='/user-dashboard' element={<><Header></Header><UserDashboard></UserDashboard></>}  />
+
+         {/* taskA routes frontend */}
+          <Route path='/companyA/TaskA' element={<><Header></Header><TaskA></TaskA></>}  />
+          <Route path='/companyA/exercise/TaskA' element={<><Header></Header><ExerciseTaskA></ExerciseTaskA></>} />
+
+          {/* auth routes */}
           <Route path='/signup' element={<Signup/>} />
           <Route path='/login' element={<Login/>} />
 

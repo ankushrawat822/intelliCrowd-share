@@ -47,7 +47,7 @@ export default function Signup() {
         }else if (response.status==200){
           console.log("user logged in");
           Cookies.set('username',user.email);
-          navigate('/')
+          navigate('/user-dashboard')
         }
       })
      

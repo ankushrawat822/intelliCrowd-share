@@ -21,7 +21,9 @@ const Signup = require("../backend/companyA/routes/userAuth")
 const Login = require("../backend/companyA/routes/userAuth")
 
 const createDefaultTask = require("../backend/companyA/routes/tasks")
-const  {getCurrentUserByEmail, updateTaskExerciseDone}  = require("./companyA/controllers/userController")
+const  {getCurrentUserByEmail, updateTaskExerciseDone, increaseTaskEarnMoney}  = require("./companyA/controllers/userController")
+const increaseTaskSpamScore = require("../backend/companyA/routes/tasks")
+const reduceTaskSpamScore = require("../backend/companyA/routes/tasks")
 
 // middelwares
 app.use(cors())
@@ -49,6 +51,13 @@ app.use("/api" , getCurrentUserByEmail)
 app.use("/api" , createDefaultTask )
 // update tasks "exerciseDone"
 app.use("/api" , updateTaskExerciseDone)
+
+// spam score increase 
+app.use("/api-spam" , increaseTaskSpamScore)
+// spam score reduce 
+app.use("/api-spam" , reduceTaskSpamScore)
+// earn money
+app.use("/api-earn" , increaseTaskEarnMoney)
 
 
 mongoose.connect(process.env.MONGO_URL)

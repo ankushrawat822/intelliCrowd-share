@@ -41,7 +41,7 @@ export default function Login() {
       
         Cookies.set('username',response.data.user.email);
 
-        navigate('/');
+        navigate('/user-dashboard');
       }
     })
     
