@@ -56,3 +56,33 @@ exports.increaseTaskSpamScore  = async (req, res) => {
       res.status(500).json({ message: 'Error updating spam score' });
     }
   };
+
+
+  // ban user for spamming submit btn
+exports.banUserForSubmitBtnSpamming  = async (req, res) => {
+    try {
+      
+      const { email, taskName } = req.body;
+      const user = await Users.findOne({ email });
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      const taskIndex = user.tasks.findIndex(task => task.name == taskName);
+      
+  
+      if (taskIndex === -1) {
+        return res.status(404).json({ message: 'Task not found' });
+      }
+  
+     
+      user.tasks[taskIndex].isBanned = true; // 
+      await user.save();
+  
+      res.json({ message: 'user banned successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error banning user' });
+    }
+  };

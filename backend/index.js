@@ -24,6 +24,7 @@ const createDefaultTask = require("../backend/companyA/routes/tasks")
 const  {getCurrentUserByEmail, updateTaskExerciseDone, increaseTaskEarnMoney}  = require("./companyA/controllers/userController")
 const increaseTaskSpamScore = require("../backend/companyA/routes/tasks")
 const reduceTaskSpamScore = require("../backend/companyA/routes/tasks")
+const { banUserForSubmitBtnSpamming } = require("./companyA/controllers/spamScoreController")
 
 // middelwares
 app.use(cors())
@@ -58,6 +59,8 @@ app.use("/api-spam" , increaseTaskSpamScore)
 app.use("/api-spam" , reduceTaskSpamScore)
 // earn money
 app.use("/api-earn" , increaseTaskEarnMoney)
+// ban user for spamming submit btn
+app.use("/api-ban" , banUserForSubmitBtnSpamming)
 
 
 mongoose.connect(process.env.MONGO_URL)

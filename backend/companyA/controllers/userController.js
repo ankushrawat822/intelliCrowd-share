@@ -163,9 +163,18 @@ exports.increaseTaskEarnMoney = async (req, res) => {
     }
 
     // Determine the amount to increase earnMoney (example: 5)
+   
     const amountToIncrease = 0.43;
 
-    user.tasks[taskIndex].earnedMoney += amountToIncrease;
+   
+
+    const currentUserEarnedMoney = user.tasks[taskIndex].earnedMoney
+
+    const updatedUserEarnedMoney = currentUserEarnedMoney + amountToIncrease
+
+    const formattedValue = parseFloat(updatedUserEarnedMoney.toFixed(2));
+
+    user.tasks[taskIndex].earnedMoney = formattedValue;
     await user.save();
 
     res.json({ message: 'Earn money increased successfully' });

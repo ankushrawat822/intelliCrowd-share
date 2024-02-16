@@ -5,3 +5,7 @@
 .exerciseTaskA-result-box-bg{
     background-color: rgba(50, 50, 50, 0.297);
 }
+
+.isBannedUserDivBg{
+    background-color: #00000047;
+}

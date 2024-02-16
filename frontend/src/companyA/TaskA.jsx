@@ -9,7 +9,7 @@ import { spamArr } from './SpamScoreData'
 let recentSubmissionTimes = [];  // Track the last few submission timestamps
 const maxRecentSubmissions = 5;  // Adjust as needed
 const timeToCompleteTask = "12 seconds"
-const thresholdTimeForSpam = 8000;
+const thresholdTimeForSpam = 14000;
 
 
 const taskName = "mark offensive"
@@ -46,23 +46,30 @@ const TaskA = () => {
   const [spamScore, setSpamScore] = useState(0)
   const email = Cookies.get('username');
 
+   const [isUserBanned , setIsUserBanned] = useState(false)
+
   // useEffect for spamScore
   useEffect(() => {
 
     const fetchSpamScore = async () => {
 
       
-
       try {
         axios.post('http://localhost:8080/api/me', { email }) // Send a POST request with email in the body
           .then(response => {
             const user = response.data; // Access the user data from the response
             const currentSpamScore = user.tasks.find(task => task.name === taskName).spamScore;
+            
+            // is user banned?
+             setIsUserBanned(user.tasks.find(task => task.name === taskName).isBanned)
 
             // console.log(tasks);
             setSpamScore(currentSpamScore)
             // Do something with the tasks data, e.g., display it in your UI
           })
+
+         
+     
 
       } catch (error) {
         console.error(error);
@@ -73,6 +80,8 @@ const TaskA = () => {
 
     fetchSpamScore()
 
+
+   
 
   }, [disabeSubmit])
 
@@ -110,7 +119,7 @@ const TaskA = () => {
       const response = await axios.get('http://localhost:8080/api/random');
 
       // condition to show spam tweet 
-      if (Math.random() < 0.56) {
+      if (Math.random() < 0.26) {
         const randomSpam = spamArr[Math.floor(Math.random() * spamArr.length)]
         setQuerry(randomSpam.tweet)
         setSpamFlag(true)
@@ -173,7 +182,23 @@ const TaskA = () => {
 
       if (recentSubmissionTimes.length > 3) {
         console.log("Warning: Frequent task submissions detected.");
-        alert("Spam Warning")
+        
+         // updating earned amount
+         axios.patch('http://localhost:8080/api-ban/submit-spam-user', { email, taskName })
+         .then(response => {
+           console.log('user banned successfully');
+           // Handle successful response, e.g., update UI to reflect the increased earn money
+         })
+         .catch(error => {
+           console.error(error);
+           // Handle errors, e.g., display an error message to the user
+         });
+ 
+
+
+
+
+
       } else {
         console.log("no warning , keep going")
       }
@@ -314,6 +339,12 @@ const TaskA = () => {
 
 
     console.log(userInput)
+
+
+    if(isUserBanned){
+      alert("you are banned due to spamming submit button")
+   }
+
 
   }
   // function to submit tasks by the user and also checking user spam and also manageing skip querry ends
@@ -462,6 +493,34 @@ const TaskA = () => {
 
 
       </div>
+
+
+
+
+  {/* div to show only if user is banned  */}
+   
+    {
+      isUserBanned && 
+      <div className=' absolute top-0 w-screen h-screen isBannedUserDivBg flex items-center justify-center'>
+        <div className='text-center w-[300px] bg-white rounded-[20px] flex justify-center flex-col items-center h-[300px] px-6'>
+          <p>You can not perform this task anymore as you are banned becaue of spamming submit button..</p>
+
+          <Link to="/user-dashboard">
+          <button
+                  type="button"
+                  className="mt-5 text-[21px] inline-flex items-center rounded-md bg-red-500 px-3 py-2 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                >
+
+                  Go Back
+                </button>
+          </Link>
+          
+        </div>
+        {console.log("is user banned : " , isUserBanned)}
+      </div>
+      
+    }
+
     </>
   )
 }
