@@ -209,7 +209,7 @@ const ExerciseTaskA = () => {
                         <p className='font-bold '>status : Exercise</p>
                         <p>10:00</p>
                         <p>Guidelines</p>
-                        <Link to="/"><button>Exit</button></Link>
+                        <Link to="/user-dashboard"><button>Exit</button></Link>
                     </div>
                 </div>
                 {/* top page nav ends */}
@@ -392,7 +392,7 @@ const ExerciseTaskA = () => {
 
                     </div>
 
-                    <Link to="/"><button
+                    <Link to="/user-dashboard"><button
                         type="button"
                         className="mt-5 z-40 text-[18px] inline-flex items-center rounded-md bg-red-500 px-2 py-1 font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                         // onClick={() => { fetchData(); submitTask(); setDisableSubmit(true) }}

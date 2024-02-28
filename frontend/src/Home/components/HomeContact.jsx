@@ -42,10 +42,11 @@ const HomeContact = () => {
                     </Typography>
                     <form ref={form} onSubmit={sendEmail} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 text-white">
                         <div className="mb-1 flex flex-col gap-6">
-                            <Typography variant="h6" color="blue-gray" className="-mb-3 text-white">
+                            <Typography required variant="h6" color="blue-gray" className="-mb-3 text-white">
                                 Your Name
                             </Typography>
                             <Input
+                            required
                                 name="user_name"
                                 size="lg"
                                 placeholder="your name"
@@ -58,6 +59,7 @@ const HomeContact = () => {
                                 Your Email
                             </Typography>
                             <Input
+                            required
                                 name="user_email"
                                 size="lg"
                                 placeholder="name@mail.com"
