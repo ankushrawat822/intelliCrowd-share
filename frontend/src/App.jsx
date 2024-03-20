@@ -2,7 +2,8 @@ import { useState } from 'react'
 import {BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import UserDashboard from './user/UserDashboard'
-import Header from './Header'
+import Header from './Clerk_auth/Header'
+
 
 // company
 import TaskA from './companyA/TaskA'
@@ -11,9 +12,17 @@ import Login from './Components/Authentication/Login'
 import ExerciseTaskA from './companyA/ExerciseTaskA'
 import HomePage from './Home/HomePage'
 
+// modified auth
+import UserLogin from "./user/Login"
+import UserSignup from "./user/Signup"
+import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/clerk-react'
+import RedirectToHome from './Helper/RedirectToHome'
+
+
+
 function App() {
 
-
+  
   return (
     <>
 
@@ -21,15 +30,69 @@ function App() {
       
         <Routes>
           <Route path='/' element={<HomePage/>} />
-          <Route path='/user-dashboard' element={<><Header></Header><UserDashboard></UserDashboard></>}  />
+
+          
+          <Route path='/user-dashboard' element={
+          <>
+           <SignedIn>
+            <UserDashboard></UserDashboard>
+           </SignedIn>
+
+
+           <SignedOut>
+             <RedirectToHome></RedirectToHome>
+           </SignedOut>
+
+        
+          </>}  />
+
+
+          <Route path='/companyA/TaskA' element={
+          <>
+           <SignedIn>
+             <TaskA></TaskA>
+           </SignedIn>
+
+
+           <SignedOut>
+             <RedirectToHome></RedirectToHome>
+           </SignedOut>
+
+        
+          </>}  />
+
+
+
+          <Route path='/companyA/exercise/TaskA' element={
+          <>
+           <SignedIn>
+           <ExerciseTaskA></ExerciseTaskA>
+           </SignedIn>
+
+
+           <SignedOut>
+             <RedirectToHome></RedirectToHome>
+           </SignedOut>
+
+        
+          </>}  />
 
          {/* taskA routes frontend */}
-          <Route path='/companyA/TaskA' element={<><Header></Header><TaskA></TaskA></>}  />
-          <Route path='/companyA/exercise/TaskA' element={<><Header></Header><ExerciseTaskA></ExerciseTaskA></>} />
+          {/* <Route path='/companyA/TaskA' element={<><TaskA></TaskA></>}  /> */}
+          {/* <Route path='/companyA/exercise/TaskA' element={<><ExerciseTaskA></ExerciseTaskA></>} /> */}
 
           {/* auth routes */}
-          <Route path='/signup' element={<Signup/>} />
-          <Route path='/login' element={<Login/>} />
+          {/* <Route path='/signup' element={<Signup/>} />
+          <Route path='/login' element={<Login/>} /> */}
+
+          {/* modified auth */}
+          {/* <Route path='/user-login' element={<> <UserLogin></UserLogin></>} />
+          <Route path='/user-signup' element={<> <UserSignup></UserSignup></>} /> */}
+         
+
+         {/* test */}
+         {/* <Route path="/test" element={<Header></Header>} ></Route> */}
+
 
         </Routes>
       </BrowserRouter>

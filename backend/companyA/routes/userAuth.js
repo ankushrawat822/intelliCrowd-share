@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const bodyParser = require("body-parser")
 
 const {Login , Signup, getCurrentUserByEmail, updateTaskExerciseDone} = require('../controllers/userController')
 
@@ -11,7 +12,7 @@ router.patch("/task-update-exercise-done" , updateTaskExerciseDone)
 // get current user by email
 router.get("/me" , getCurrentUserByEmail)
 
-router.post ("/signup", Signup)
+router.post ("/webhooks", bodyParser.raw({ type: "application/json" }), Signup)
 router.post ("/login", Login)
 
 

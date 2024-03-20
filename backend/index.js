@@ -5,6 +5,7 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv").config()
+const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 8080
 
@@ -26,10 +27,49 @@ const increaseTaskSpamScore = require("../backend/companyA/routes/tasks")
 const reduceTaskSpamScore = require("../backend/companyA/routes/tasks")
 const { banUserForSubmitBtnSpamming } = require("./companyA/controllers/spamScoreController")
 
+
+// import { Webhook } from "svix";
+const  {Webhook}  = require('svix');
+// import bodyParser from "body-parser";
+
 // middelwares
 app.use(cors())
 app.use(bodyParser.json())
 app.use(express.json())
+app.use(cookieParser());
+
+
+// clerk start
+
+// app.post(
+//     "/api/webhooks",
+//     bodyParser.raw({ type: "application/json" }),
+//     async function (req, res) {
+//        try {
+        
+//          const userData = req.body
+//          console.log(req.body)
+         
+//          console.log(req.body.data.email_addresses[0].email_address)
+    
+//          res.status(200).json({
+//              success : true,
+//              message : "webhook received"
+//          })
+        
+//        } catch (error) {
+
+//         res.status(400).json({
+//             success : false,
+//             message : "webhook not  received"
+//         })
+        
+//        }
+//     })
+
+
+// clerk ends
+
 
 
 // mounting routes

@@ -9,25 +9,25 @@ const UserSchema = new Schema(
       type:String,
       required: true
     },
-    password:{
-      type:String,
-      required:true
-    },
+    // password:{
+    //   type:String,
+    //   // required:true
+    // },
     fullname:{
       type:String,
-      required:true
+      
     },
     phoneNo:{
       type:String,
-      required:true
+      
     },
     age : {
         type : Number,
-        required:true
+         
     },
     region :{
         type : String,
-        required:true
+        
     },
     tasks: [
       {

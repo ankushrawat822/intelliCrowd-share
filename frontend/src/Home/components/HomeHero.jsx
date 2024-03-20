@@ -3,7 +3,27 @@ import "../home.css"
 import {Link } from 'react-router-dom'
 import { FaArrowRightLong } from "react-icons/fa6";
 
+// clerk
+import { SignInButton } from '@clerk/clerk-react';
+
+import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from 'react-router-dom';
+
 const HomeHero = () => {
+   const navigate = useNavigate()
+  const { isSignedIn, user, isLoaded } = useUser();
+  
+
+   const handleUserSign = ()=>{
+
+      if(isSignedIn){
+        navigate("/user-dashboard")
+      }
+
+      console.log("handleUserSing")
+   }
+
+
   return (
     <>
 
@@ -49,8 +69,18 @@ const HomeHero = () => {
            <p className='text-[14px]'>Now</p>
 
             </div>
-             
-            <Link to="/login"><button className='bg-red-600 rounded-[30px] px-3 py-2'><FaArrowRightLong className='font-bold text-[19px]' /></button></Link> 
+            
+            
+            
+              <SignInButton mode='modal' redirectUrl='/user-dashboard'>
+              <button onClick={handleUserSign} className='bg-red-600 rounded-[30px] px-3 py-2'><FaArrowRightLong className='font-bold text-[19px]' />
+            
+            </button>
+        </SignInButton>
+            
+              
+            
+          
          
          </div>
      </div>

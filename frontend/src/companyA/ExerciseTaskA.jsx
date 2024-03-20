@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Cookies from 'js-cookie'
+import { useUser } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom'
 import "./taskA.css"
 import { exerciseTaskADataArray } from './ExerciseTaskData'
@@ -14,10 +14,12 @@ import { exerciseTaskADataArray } from './ExerciseTaskData'
 
 const ExerciseTaskA = () => {
 
+    const { user } = useUser();
+
+    const email = user.primaryEmailAddress.emailAddress
+
     // NAME OF TASKS
     const taskName = "mark offensive"
-
-    const email = Cookies.get('username');
 
     // index 
     const [index, setIndex] = useState(0)
@@ -389,6 +391,7 @@ const ExerciseTaskA = () => {
                     <div>
                         <p>Congrats , you have completed the exercise successfully </p>
                         <p>now you can start doing the actual tasks and earn money</p>
+                        <p>Go back to dashboard and reload the page.</p>
 
                     </div>
 

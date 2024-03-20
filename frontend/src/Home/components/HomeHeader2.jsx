@@ -167,7 +167,7 @@ function NavList() {
         color="blue-gray"
         className="font-medium"
       >
-        <Link to="/login"><ListItem className="flex items-center gap-2 py-2 pr-4 text-white">Earn Money</ListItem></Link>
+        <Link to="/user-login"><ListItem className="flex items-center gap-2 py-2 pr-4 text-white">Earn Money</ListItem></Link>
       </Typography>
       <NavListMenu />
       <Typography
@@ -197,17 +197,22 @@ const HomeHeader2 = () => {
     }, []);
   return (
     <>
-         <Navbar className="mx-auto w-screen px-4 py-2 mt-[-6px] bg-[#282828] home-header-border">
+         <Navbar className="mx-auto w-screen px-4 py-2  bg-[#282828] home-header-border">
       <div className="flex items-center justify-between text-white">
-        <Typography
+      <Link to="/" >
+
+      <Typography
           as="a"
-          href="#"
+         
           variant="h6"
           className="mr-4 cursor-pointer py-1 lg:ml-2 text-[23px]"
         >
            IntelliCrowd
-           <p className="text-[8px] font-normal">of the data, by the data, for the data</p>
+           {/* <p className="text-[8px] font-normal">of the data, by the data, for the data</p> */}
         </Typography>
+
+      </Link>
+        
         <div className="hidden lg:block">
           <NavList />
         </div>

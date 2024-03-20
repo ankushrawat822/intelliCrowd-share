@@ -47,7 +47,7 @@ const Header = () => {
               UserName?
                   <p>{UserName}</p>
               :    
-                <Link to="/signup">Sign up</Link>
+                <Link to="/user-signup">Sign up</Link>
              }
              
              <p className='cursor-pointer' onClick={()=>{setRefereshState(prev => !prev)}}>Refresh</p>

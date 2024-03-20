@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import Cookies from 'js-cookie';
+
 import { Link } from 'react-router-dom';
 import { FaEye } from "react-icons/fa";
 import { FaDumbbell } from "react-icons/fa6";
 import { CiBookmarkCheck } from "react-icons/ci";
 import { VscFeedback } from "react-icons/vsc";
 
-const TaskListA = ({ }) => {
+const TaskListA = ({ email }) => {
 
   const [tasksData, setTasksData] = useState([])
 
-  const email = Cookies.get('username');
 
   useEffect(() => {
 
@@ -22,6 +21,7 @@ const TaskListA = ({ }) => {
 
         // console.log(tasks);
         setTasksData(tasks)
+       
 
         // Do something with the tasks data, e.g., display it in your UI
       })
@@ -47,7 +47,7 @@ const TaskListA = ({ }) => {
   return (
     <>
       {/* THIS IS MY USER DASHBOARD => TAKS LISTING UI */}
-      <div className='flex items-start justify-between  px-5 py-4 task-box-shadow rounded-[14px]'>
+      <div className='bg-white flex items-start justify-between  px-5 py-4 task-box-shadow rounded-[14px]'>
         {/* div 1 => title , btns  */}
         <div className=' flex items-start flex-col justify-between gap-3'>
           <b className='text-[21px]'>Mark Offensive </b>

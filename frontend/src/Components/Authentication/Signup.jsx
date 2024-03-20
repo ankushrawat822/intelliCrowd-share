@@ -77,7 +77,7 @@ export default function Signup() {
                    <form onSubmit={handleSubmit} className="sign_up_div">
                    <div className="row align_left">
                    <h5 className="col-lg-9 col-md-8 col-sm-8 mt-3 greycolor">Already have an account?</h5>
-                   <button onClick={()=>navigate('/login')} className="mt-2 signin_button_head col-lg-3 col-md-3 col-sm-3 btn ">Sign in</button>
+                   <button onClick={()=>navigate('/user-login')} className="mt-2 signin_button_head col-lg-3 col-md-3 col-sm-3 btn ">Sign in</button>
                    </div>
                    <h2 className="card_margin text-2xl">Welcome to <span className="highlight_logo">IntelliCrowd</span></h2>
                    <h5 className="card_margin greycolor">Register your account</h5>

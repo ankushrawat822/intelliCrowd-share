@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Cookies from 'js-cookie';
+import { useUser } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom'
 import "./taskA.css"
 import { spamArr } from './SpamScoreData'
@@ -16,6 +16,10 @@ const taskName = "mark offensive"
 
 const TaskA = () => {
 
+
+  const { user } = useUser();
+
+  const email = user.primaryEmailAddress.emailAddress;
 
 
   // task variable that is randomly fetched
@@ -44,7 +48,7 @@ const TaskA = () => {
 
 
   const [spamScore, setSpamScore] = useState(0)
-  const email = Cookies.get('username');
+ 
 
    const [isUserBanned , setIsUserBanned] = useState(false)
 

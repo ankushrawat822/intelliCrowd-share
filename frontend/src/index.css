@@ -30,3 +30,10 @@ body{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
+.login-div-box-shadow{
+   
+    -webkit-box-shadow: -6px 23px 222px -45px rgba(255, 255, 255, 0.598);
+-moz-box-shadow: -6px 23px 222px -45px rgba(255, 255, 255, 0.573);
+box-shadow: -6px 23px 222px -45px rgba(255, 255, 255, 0.495);
+
+}
